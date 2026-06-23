@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  phone        String?
+  createdAt    DateTime      @default(now())
+  enrollments  Enrollment[]
+  certificates Certificate[]
+}
+
+model Course {
+  id              String       @id @default(cuid())
+  title           String
+  slug            String       @unique
+  category        String // SMC, ICT, FOREX_BASICS, RISK_MANAGEMENT
+  level           String // beginner, intermediate, advanced
+  description     String
+  longDescription String?
+  price           Float
+  oldPrice        Float?
+  duration        String
+  lessons         Int
+  students        Int          @default(0)
+  rating          Float        @default(5)
+  instructor      String
+  image           String?
+  featured        Boolean      @default(false)
+  curriculum      String // JSON string of modules/lessons
+  createdAt       DateTime     @default(now())
+  enrollments     Enrollment[]
+}
+
+model Enrollment {
+  id          String       @id @default(cuid())
+  studentId   String
+  courseId    String
+  status      String       @default("pending") // pending, paid, completed
+  progress    Int          @default(0)
+  createdAt   DateTime     @default(now())
+  student     Student      @relation(fields: [studentId], references: [id])
+  course      Course       @relation(fields: [courseId], references: [id])
+  payments    Payment[]
+  certificate Certificate?
+}
+
+model Payment {
+  id            String     @id @default(cuid())
+  enrollmentId  String
+  cryptoType    String // BTC, ETH, USDT
+  currency      String // USD
+  amount        Float
+  amountCrypto  Float
+  walletAddress String
+  status        String     @default("pending") // pending, confirmed, failed
+  txHash        String?
+  createdAt     DateTime   @default(now())
+  confirmedAt   DateTime?
+  enrollment    Enrollment @relation(fields: [enrollmentId], references: [id])
+}
+
+model Certificate {
+  id                String     @id @default(cuid())
+  enrollmentId      String     @unique
+  studentId         String
+  courseId          String
+  certificateNumber String     @unique
+  issuedAt          DateTime   @default(now())
+  student           Student    @relation(fields: [studentId], references: [id])
+  enrollment        Enrollment @relation(fields: [enrollmentId], references: [id])
+}
