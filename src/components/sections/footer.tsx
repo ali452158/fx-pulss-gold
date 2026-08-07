@@ -7,6 +7,7 @@ import { TikTokIcon } from '@/components/icons/tiktok-icon'
 import { SOCIAL_LINKS, TELEGRAM_CHANNEL, TELEGRAM_CONTACT } from '@/lib/brand'
 
 const LINKS = [
+  { href: '#programming', label: 'خدمات البرمجة' },
   { href: '#markets', label: 'الأسواق الحيّة' },
   { href: '#courses', label: 'الكورسات' },
   { href: '#indicators', label: 'المؤشرات المجانية' },

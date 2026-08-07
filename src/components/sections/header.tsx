@@ -11,6 +11,7 @@ import { TikTokIcon } from '@/components/icons/tiktok-icon'
 import { SOCIAL_LINKS, TELEGRAM_CHANNEL } from '@/lib/brand'
 
 const NAV = [
+  { href: '#programming', label: 'البرمجة' },
   { href: '#courses', label: 'الكورسات' },
   { href: '#charts', label: 'المخططات' },
   { href: '#indicators', label: 'المؤشرات' },
