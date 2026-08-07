@@ -19,7 +19,7 @@ export default function Home() {
         <div className="neon-orb orb-3" />
       </div>
 
-      {/* Diagonal animated neon line (45 degrees, full page) */}
+      {/* Diagonal animated neon line — full page 45° */}
       <div className="neon-diagonal-line" aria-hidden="true" />
 
       <div className="relative z-10 flex flex-col min-h-screen">
