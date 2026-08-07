@@ -26,6 +26,7 @@ export default function Home() {
         <NewsTicker />
         <main className="flex-1">
           <Hero />
+          {/* Programming Services Section */}
           <ProgrammingServices />
           <Courses />
           <Indicators />
