@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Send, Code2, Bot, BarChart3, Cpu, Zap, ShieldCheck, Clock, Rocket } from 'lucide-react'
+import { Send, Code2, Bot, BarChart3, Cpu, Zap, ShieldCheck, Clock, Rocket, Eye } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -59,6 +59,46 @@ const SERVICES = [
   },
 ]
 
+/* Showcase of built tools */
+const SHOWCASE = [
+  {
+    image: '/prog-tool1.jpg',
+    title: 'مؤشر Smart Money Concepts',
+    platform: 'TradingView',
+    platformColor: 'bg-blue-500/90',
+  },
+  {
+    image: '/prog-tool2.jpg',
+    title: 'لوحة تحكم Alfa Pro',
+    platform: 'Dashboard',
+    platformColor: 'bg-amber-500/90',
+  },
+  {
+    image: '/prog-tool3.jpg',
+    title: 'نظام تسجيل دخول Alfa Pro',
+    platform: 'Web App',
+    platformColor: 'bg-emerald-500/90',
+  },
+  {
+    image: '/prog-tool4.jpg',
+    title: 'منشئ التقارير Alfa',
+    platform: 'Reports',
+    platformColor: 'bg-sky-500/90',
+  },
+  {
+    image: '/prog-tool5.jpg',
+    title: 'ربط حسابات MT5',
+    platform: 'MT5',
+    platformColor: 'bg-emerald-500/90',
+  },
+  {
+    image: '/prog-tool6.jpg',
+    title: 'محدد الاستراتيجية',
+    platform: 'Strategy',
+    platformColor: 'bg-purple-500/90',
+  },
+]
+
 const TRUST_ITEMS = [
   { icon: Code2, label: '+50 مشروع برمجي', sub: 'تم تسليمه بنجاح' },
   { icon: ShieldCheck, label: 'ضمان الجودة', sub: 'صيانة مجانية 30 يوم' },
@@ -88,7 +128,7 @@ export function ProgrammingServices() {
         </div>
 
         {/* Services grid */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-10">
+        <div className="grid sm:grid-cols-2 gap-6 mb-12">
           {SERVICES.map((s) => (
             <Card
               key={s.nameEn}
@@ -162,6 +202,51 @@ export function ProgrammingServices() {
               </Button>
             </Card>
           ))}
+        </div>
+
+        {/* ===== Showcase: Tools We Built ===== */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-semibold text-amber-600 dark:text-amber-400 mb-4">
+              <Eye className="h-3.5 w-3.5" />
+              أعمالنا
+            </div>
+            <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-2">
+              أدوات <span className="text-gradient-gold">برمجناها</span> بإيدينا
+            </h3>
+            <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+              نماذج حقيقية من المؤشرات واللوحات والاكسبرتات التي برمجناها — كل مشروع مخصصة حسب استراتيجية العميل
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {SHOWCASE.map((item, idx) => (
+              <div
+                key={idx}
+                className="group relative rounded-xl overflow-hidden border border-border/50 hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-500/5 transition-all duration-300"
+              >
+                <div className="relative aspect-video">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                  {/* Platform badge */}
+                  <Badge className={`absolute top-2 left-2 ${item.platformColor} text-white border-0 text-[9px]`}>
+                    {item.platform}
+                  </Badge>
+                  {/* Title */}
+                  <div className="absolute bottom-2 right-2 left-2">
+                    <p className="text-xs font-bold text-foreground truncate">{item.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Trust items */}
