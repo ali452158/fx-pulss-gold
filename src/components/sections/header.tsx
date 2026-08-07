@@ -13,10 +13,8 @@ import { SOCIAL_LINKS, TELEGRAM_CHANNEL } from '@/lib/brand'
 const NAV = [
   { href: '#programming', label: 'البرمجة' },
   { href: '#courses', label: 'الكورسات' },
-  { href: '#charts', label: 'المخططات' },
   { href: '#indicators', label: 'المؤشرات' },
   { href: '#calculator', label: 'الحاسبة' },
-  { href: '#funded', label: 'حسابات التمويل' },
   { href: '#faq', label: 'الأسئلة' },
 ]
 

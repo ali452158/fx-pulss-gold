@@ -3,10 +3,8 @@ import { NewsTicker } from '@/components/sections/news-ticker'
 import { Hero } from '@/components/sections/hero'
 import { ProgrammingServices } from '@/components/sections/programming-services'
 import { Courses } from '@/components/sections/courses'
-import { TradingCharts } from '@/components/sections/trading-charts'
 import { Indicators } from '@/components/sections/indicators'
 import { PositionSizeCalculator } from '@/components/sections/position-size-calculator'
-import { FundedAccounts } from '@/components/sections/funded-accounts'
 import { Faq } from '@/components/sections/faq'
 import { Footer } from '@/components/sections/footer'
 
@@ -30,10 +28,8 @@ export default function Home() {
           <Hero />
           <ProgrammingServices />
           <Courses />
-          <TradingCharts />
           <Indicators />
           <PositionSizeCalculator />
-          <FundedAccounts />
           <Faq />
         </main>
         <Footer />

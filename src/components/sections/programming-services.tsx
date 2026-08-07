@@ -1,10 +1,12 @@
 'use client'
 
+import Image from 'next/image'
 import { Send, Code2, Bot, BarChart3, Cpu, Zap, ShieldCheck, Clock, Rocket } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { TELEGRAM_CONTACT } from '@/lib/brand'
+import { cn } from '@/lib/utils'
 
 const SERVICES = [
   {
@@ -15,8 +17,9 @@ const SERVICES = [
     color: 'from-blue-500/20 to-blue-600/10',
     iconColor: 'text-blue-500',
     borderHover: 'hover:border-blue-500/40',
-    features: ['Pine Script v5', 'تنبيهات فورية', 'مخصصة 100%', 'متوافقة مع جميع الأطر الزمنية'],
+    features: ['Pine Script v5', 'تنبيهات فورية', 'مخصصة 100%', 'جميع الأطر الزمنية'],
     badge: 'الأكثر طلباً',
+    image: '/prog-tradingview.jpg',
   },
   {
     icon: Cpu,
@@ -28,6 +31,7 @@ const SERVICES = [
     borderHover: 'hover:border-emerald-500/40',
     features: ['MQL5', 'رسوم متقدمة', 'تنبيهات push', 'جميع أنواع الحسابات'],
     badge: null,
+    image: '/prog-mt5.jpg',
   },
   {
     icon: Bot,
@@ -39,6 +43,7 @@ const SERVICES = [
     borderHover: 'hover:border-amber-500/40',
     features: ['أخذ صفقات تلقائي', 'إدارة مخاطر', 'تريلنج ستوب', 'باك تست كامل'],
     badge: 'احترافي',
+    image: '/prog-ea-bot.jpg',
   },
   {
     icon: Zap,
@@ -50,6 +55,7 @@ const SERVICES = [
     borderHover: 'hover:border-purple-500/40',
     features: ['إشارات لحظية', 'Telegram + Discord', 'تفاصيل كاملة', 'متعدد الأزواج'],
     badge: null,
+    image: null,
   },
 ]
 
@@ -86,7 +92,11 @@ export function ProgrammingServices() {
           {SERVICES.map((s) => (
             <Card
               key={s.nameEn}
-              className={`group relative overflow-hidden flex flex-col p-6 ${s.borderHover} hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300`}
+              className={cn(
+                'group relative overflow-hidden flex flex-col p-6',
+                s.borderHover,
+                'hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300'
+              )}
             >
               {/* Badge */}
               {s.badge && (
@@ -97,10 +107,27 @@ export function ProgrammingServices() {
                 </div>
               )}
 
-              {/* Icon */}
-              <div className={`h-14 w-14 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <s.icon className={`h-7 w-7 ${s.iconColor}`} />
-              </div>
+              {/* Image or Icon */}
+              {s.image ? (
+                <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4 border border-border/50">
+                  <Image
+                    src={s.image}
+                    alt={s.nameAr}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                  {/* Icon overlay */}
+                  <div className={cn('absolute bottom-3 right-3 h-10 w-10 rounded-lg bg-gradient-to-br flex items-center justify-center', s.color)}>
+                    <s.icon className={cn('h-5 w-5', s.iconColor)} />
+                  </div>
+                </div>
+              ) : (
+                <div className={cn('h-14 w-14 rounded-xl bg-gradient-to-br flex items-center justify-center mb-4 group-hover:scale-110 transition-transform', s.color)}>
+                  <s.icon className={cn('h-7 w-7', s.iconColor)} />
+                </div>
+              )}
 
               {/* Title */}
               <div className="mb-2">
