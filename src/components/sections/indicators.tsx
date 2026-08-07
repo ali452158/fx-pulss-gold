@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import {
   Gift, Download, Send, Layers, TrendingUp, ArrowLeftRight, Activity,
-  Repeat, Droplets, Target, Clock, Sparkles, Lock,
+  Repeat, Droplets, Target, Clock, Sparkles, Lock, Workflow,
 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -102,6 +102,17 @@ const PAID_INDICATORS: Indicator[] = [
     desc: 'نظام دخول متكامل يحدّد نقطة الدخول ووقف الخسارة (Stop Loss) والأهداف (Take Profit) تلقائياً لكل صفقة.',
     tags: ['Entry', 'SL', 'TP', 'Auto'],
     badge: 'الأكثر طلباً',
+    paid: true,
+  },
+  {
+    name: 'Fractal Indicator',
+    nameAr: 'مؤشر الفركتال',
+    icon: Workflow,
+    color: 'from-indigo-500/20 to-indigo-600/10',
+    iconColor: 'text-indigo-500',
+    desc: 'مؤشر الفركتال (Fractal) يحدّد نقاط الانعكاس على الرسم البياني بتقنية ويليامز، ويعرض الفركتلات الصاعدة والهابطة مع إشارات دخول واضحة.',
+    tags: ['Fractal', 'Reversal', 'Williams', 'Signals'],
+    badge: 'مدفوع',
     paid: true,
   },
 ]

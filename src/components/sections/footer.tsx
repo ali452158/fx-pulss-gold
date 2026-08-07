@@ -121,13 +121,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/alifxgold3" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-pink-500 transition-colors">
+                <a href="https://www.instagram.com/alitredr0?igsh=eXE0Z2QzMTkxM2hj" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-pink-500 transition-colors">
                   <Instagram className="h-4 w-4 text-pink-500 shrink-0" />
-                  <span dir="ltr">@alifxgold3</span>
+                  <span dir="ltr">@alitredr0</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.tiktok.com/@ali.trad011" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
+                <a href="https://tiktok.com/@ali.trad011" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
                   <TikTokIcon className="h-4 w-4 shrink-0" />
                   <span dir="ltr">@ali.trad011</span>
                 </a>
