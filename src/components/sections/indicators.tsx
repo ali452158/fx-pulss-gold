@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import {
   Gift, Download, Send, Layers, TrendingUp, ArrowLeftRight, Activity,
   Repeat, Droplets, Target, Clock, Sparkles, Lock, Workflow,
@@ -21,6 +22,7 @@ type Indicator = {
   tags: string[]
   badge?: string | null
   paid: boolean
+  image?: string
 }
 
 const FREE_INDICATORS: Indicator[] = [
@@ -114,6 +116,7 @@ const PAID_INDICATORS: Indicator[] = [
     tags: ['Fractal', 'Reversal', 'Williams', 'Signals'],
     badge: 'مدفوع',
     paid: true,
+    image: '/fractal-indicator.jpg',
   },
 ]
 
@@ -145,10 +148,23 @@ function IndicatorCard({ ind }: { ind: Indicator }) {
         )}
       </div>
 
-      {/* Icon */}
-      <div className={cn('h-12 w-12 rounded-xl bg-gradient-to-br flex items-center justify-center mb-4 group-hover:scale-110 transition-transform', ind.color)}>
-        <ind.icon className={cn('h-6 w-6', ind.iconColor)} />
-      </div>
+      {/* Image or Icon */}
+      {ind.image ? (
+        <div className="relative w-full h-40 rounded-lg overflow-hidden mb-4 border border-border/50">
+          <Image
+            src={ind.image}
+            alt={ind.nameAr}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+        </div>
+      ) : (
+        <div className={cn('h-12 w-12 rounded-xl bg-gradient-to-br flex items-center justify-center mb-4 group-hover:scale-110 transition-transform', ind.color)}>
+          <ind.icon className={cn('h-6 w-6', ind.iconColor)} />
+        </div>
+      )}
 
       {/* Title */}
       <div className="mb-2">
